@@ -21,7 +21,7 @@ elif [[ $(uname) == 'Darwin' ]]; then
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release ..
   make
-  cd ../..
+  cd ../../../..
 
   # Install PotreeConverter
   # cd lib/octree
