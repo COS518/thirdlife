@@ -4,7 +4,7 @@ if [[ $(uname) == 'Linux' ]]; then
   sudo apt-get install -y nodejs npm nodejs-legacy
   npm install -g gulp
   npm install
-  cd octree
+  cd potree
   gulp build
 
   # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/build/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.so ..
