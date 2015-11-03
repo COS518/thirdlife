@@ -1,0 +1,35 @@
+node_modules
+.DS_Store
+
+# Potree
+./build
+node_modules
+docs/.marking_your_own_pointcloud_loader.md.html
+docs/.file_format.md.html
+docs/.doc.md.html
+docs/.how_does_loading_nodes_work.md.html
+docs/.materials_and_rendermodes.md.html
+docs/.how_to_create_your_own_pointcloud_loader.md.html
+.project
+
+# PotreeConverter
+Potree.v11.suo
+Potree.v12.suo
+Potree.sdf
+PotreeConverter/bin
+PotreeConverter/obj
+Potree.opensdf
+bin/
+obj
+build/*
+.idea
+*.orig
+test/converted
+
+# LAStools
+src_full
+Release
+Debug
+lastools.ncb
+lastools.opt
+*~

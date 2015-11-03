@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [[ $(uname) == 'Linux' ]]; then
+  sudo apt-get install -y nodejs npm
+  npm install -g gulp
+  npm install
+
+  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../LAStools/LASzip/dll -DLASZIP_LIBRARY=../LAStools/LASzip/build/src/liblaszip.so ..
+elif [[ $(uname) == 'Darwin' ]]; then
+  # Install node and gulp
+  brew install node
+  npm install -g gulp
+  npm install
+
+  # Install LAStools
+  cd lib/LAStools/LASzip
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make
+  cd ../../..
+
+  # Install PotreeConverter
+  cd octree
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../LAStools/LASzip/dll -DLASZIP_LIBRARY=../LAStools/LASzip/build/src/liblaszip.dylib ..
+  make
+  cd ../..
+fi
