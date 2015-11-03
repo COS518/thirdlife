@@ -28,31 +28,31 @@ The CXX compiler identification is AppleClang, found in "/Users/danielsuo/thirdl
 Determining if the C compiler works passed with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec4198510335/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4198510335.dir/build.make CMakeFiles/cmTryCompileExec4198510335.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1518567283/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1518567283.dir/build.make CMakeFiles/cmTryCompileExec1518567283.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec4198510335.dir/testCCompiler.c.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4198510335.dir/testCCompiler.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec4198510335
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4198510335.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4198510335.dir/testCCompiler.c.o  -o cmTryCompileExec4198510335  
+Building C object CMakeFiles/cmTryCompileExec1518567283.dir/testCCompiler.c.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1518567283.dir/testCCompiler.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec1518567283
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1518567283.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1518567283.dir/testCCompiler.c.o  -o cmTryCompileExec1518567283  
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec516836441/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec516836441.dir/build.make CMakeFiles/cmTryCompileExec516836441.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4117159056/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4117159056.dir/build.make CMakeFiles/cmTryCompileExec4117159056.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec516836441
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec516836441.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec516836441   
+Building C object CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec4117159056
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4117159056.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec4117159056   
 Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
 Target: x86_64-apple-darwin15.0.0
 Thread model: posix
- "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec516836441 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a
+ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec4117159056 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a
 @(#)PROGRAM:ld  PROJECT:ld64-242.2
 configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7m armv7em
 Library search paths:
@@ -67,18 +67,18 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec516836441/fast"]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec516836441.dir/build.make CMakeFiles/cmTryCompileExec516836441.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec4117159056/fast"]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4117159056.dir/build.make CMakeFiles/cmTryCompileExec4117159056.dir/build]
   ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec516836441]
-  ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec516836441.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec516836441   ]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec4117159056]
+  ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4117159056.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec4117159056   ]
   ignore line: [Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)]
   ignore line: [Target: x86_64-apple-darwin15.0.0]
   ignore line: [Thread model: posix]
-  link line: [ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec516836441 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
+  link line: [ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec4117159056 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
     arg [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
     arg [-demangle] ==> ignore
     arg [-dynamic] ==> ignore
@@ -87,11 +87,11 @@ Parsed C implicit link information from above output:
     arg [-macosx_version_min] ==> ignore
     arg [10.11.0] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec516836441] ==> ignore
+    arg [cmTryCompileExec4117159056] ==> ignore
     arg [-search_paths_first] ==> ignore
     arg [-headerpad_max_install_names] ==> ignore
     arg [-v] ==> ignore
-    arg [CMakeFiles/cmTryCompileExec516836441.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec4117159056.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lSystem] ==> lib [System]
     arg [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
   Library search paths: [;/usr/lib;/usr/local/lib]
@@ -112,14 +112,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1984218301/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1984218301.dir/build.make CMakeFiles/cmTryCompileExec1984218301.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3858266121/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3858266121.dir/build.make CMakeFiles/cmTryCompileExec3858266121.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1984218301.dir/feature_tests.c.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec1984218301.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec1984218301
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1984218301.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1984218301.dir/feature_tests.c.o  -o cmTryCompileExec1984218301  
+Building C object CMakeFiles/cmTryCompileExec3858266121.dir/feature_tests.c.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec3858266121.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec3858266121
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3858266121.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3858266121.dir/feature_tests.c.o  -o cmTryCompileExec3858266121  
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -131,14 +131,14 @@ Linking C executable cmTryCompileExec1984218301
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec4232375441/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4232375441.dir/build.make CMakeFiles/cmTryCompileExec4232375441.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3418624668/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3418624668.dir/build.make CMakeFiles/cmTryCompileExec3418624668.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec4232375441.dir/feature_tests.c.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec4232375441.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec4232375441
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4232375441.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4232375441.dir/feature_tests.c.o  -o cmTryCompileExec4232375441  
+Building C object CMakeFiles/cmTryCompileExec3418624668.dir/feature_tests.c.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec3418624668.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec3418624668
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3418624668.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3418624668.dir/feature_tests.c.o  -o cmTryCompileExec3418624668  
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -150,14 +150,14 @@ Linking C executable cmTryCompileExec4232375441
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1393292013/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1393292013.dir/build.make CMakeFiles/cmTryCompileExec1393292013.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1245680154/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1245680154.dir/build.make CMakeFiles/cmTryCompileExec1245680154.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1393292013.dir/feature_tests.c.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec1393292013.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec1393292013
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1393292013.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1393292013.dir/feature_tests.c.o  -o cmTryCompileExec1393292013  
+Building C object CMakeFiles/cmTryCompileExec1245680154.dir/feature_tests.c.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec1245680154.dir/feature_tests.c.o   -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1245680154
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1245680154.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1245680154.dir/feature_tests.c.o  -o cmTryCompileExec1245680154  
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -167,31 +167,31 @@ Linking C executable cmTryCompileExec1393292013
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3188197271/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3188197271.dir/build.make CMakeFiles/cmTryCompileExec3188197271.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2244047007/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2244047007.dir/build.make CMakeFiles/cmTryCompileExec2244047007.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3188197271.dir/testCXXCompiler.cxx.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3188197271.dir/testCXXCompiler.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec3188197271
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3188197271.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3188197271.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3188197271  
+Building CXX object CMakeFiles/cmTryCompileExec2244047007.dir/testCXXCompiler.cxx.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2244047007.dir/testCXXCompiler.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec2244047007
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2244047007.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2244047007.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec2244047007  
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2245330944/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2245330944.dir/build.make CMakeFiles/cmTryCompileExec2245330944.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1274436884/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1274436884.dir/build.make CMakeFiles/cmTryCompileExec1274436884.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec2245330944
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2245330944.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2245330944   
+Building CXX object CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1274436884
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1274436884.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1274436884   
 Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)
 Target: x86_64-apple-darwin15.0.0
 Thread model: posix
- "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec2245330944 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a
+ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec1274436884 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a
 @(#)PROGRAM:ld  PROJECT:ld64-242.2
 configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7m armv7em
 Library search paths:
@@ -206,18 +206,18 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2245330944/fast"]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2245330944.dir/build.make CMakeFiles/cmTryCompileExec2245330944.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1274436884/fast"]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1274436884.dir/build.make CMakeFiles/cmTryCompileExec1274436884.dir/build]
   ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec2245330944]
-  ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2245330944.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2245330944   ]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.2.3/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1274436884]
+  ignore line: [/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1274436884.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1274436884   ]
   ignore line: [Apple LLVM version 6.1.0 (clang-602.0.53) (based on LLVM 3.6.0svn)]
   ignore line: [Target: x86_64-apple-darwin15.0.0]
   ignore line: [Thread model: posix]
-  link line: [ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec2245330944 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
+  link line: [ "/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.11.0 -o cmTryCompileExec1274436884 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
     arg [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
     arg [-demangle] ==> ignore
     arg [-dynamic] ==> ignore
@@ -226,11 +226,11 @@ Parsed CXX implicit link information from above output:
     arg [-macosx_version_min] ==> ignore
     arg [10.11.0] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec2245330944] ==> ignore
+    arg [cmTryCompileExec1274436884] ==> ignore
     arg [-search_paths_first] ==> ignore
     arg [-headerpad_max_install_names] ==> ignore
     arg [-v] ==> ignore
-    arg [CMakeFiles/cmTryCompileExec2245330944.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1274436884.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lc++] ==> lib [c++]
     arg [-lSystem] ==> lib [System]
     arg [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a]
@@ -252,14 +252,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2289901736/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2289901736.dir/build.make CMakeFiles/cmTryCompileExec2289901736.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3138851107/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3138851107.dir/build.make CMakeFiles/cmTryCompileExec3138851107.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2289901736.dir/feature_tests.cxx.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec2289901736.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec2289901736
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2289901736.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2289901736.dir/feature_tests.cxx.o  -o cmTryCompileExec2289901736  
+Building CXX object CMakeFiles/cmTryCompileExec3138851107.dir/feature_tests.cxx.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec3138851107.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec3138851107
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3138851107.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3138851107.dir/feature_tests.cxx.o  -o cmTryCompileExec3138851107  
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -324,14 +324,14 @@ Linking CXX executable cmTryCompileExec2289901736
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1341324304/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec1341324304.dir/build.make CMakeFiles/cmTryCompileExec1341324304.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3980886304/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec3980886304.dir/build.make CMakeFiles/cmTryCompileExec3980886304.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1341324304.dir/feature_tests.cxx.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec1341324304.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec1341324304
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1341324304.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1341324304.dir/feature_tests.cxx.o  -o cmTryCompileExec1341324304  
+Building CXX object CMakeFiles/cmTryCompileExec3980886304.dir/feature_tests.cxx.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec3980886304.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec3980886304
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3980886304.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3980886304.dir/feature_tests.cxx.o  -o cmTryCompileExec3980886304  
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -396,14 +396,14 @@ Linking CXX executable cmTryCompileExec1341324304
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2237080672/fast"
-/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec2237080672.dir/build.make CMakeFiles/cmTryCompileExec2237080672.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4058268625/fast"
+/Applications/Xcode6.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec4058268625.dir/build.make CMakeFiles/cmTryCompileExec4058268625.dir/build
 /usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_progress_report /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2237080672.dir/feature_tests.cxx.o
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec2237080672.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec2237080672
-/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2237080672.dir/link.txt --verbose=1
-/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2237080672.dir/feature_tests.cxx.o  -o cmTryCompileExec2237080672  
+Building CXX object CMakeFiles/cmTryCompileExec4058268625.dir/feature_tests.cxx.o
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec4058268625.dir/feature_tests.cxx.o -c /Users/danielsuo/thirdlife/lib/octree/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec4058268625
+/usr/local/Cellar/cmake/3.2.3/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4058268625.dir/link.txt --verbose=1
+/Applications/Xcode6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4058268625.dir/feature_tests.cxx.o  -o cmTryCompileExec4058268625  
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

@@ -33,3 +33,7 @@ Debug
 lastools.ncb
 lastools.opt
 *~
+
+CMakeFiles
+*.o
+*.a

@@ -222,10 +222,10 @@ CMAKE_USE_RELATIVE_PATHS:BOOL=OFF
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //No help, variable specified on the command line.
-LASZIP_INCLUDE_DIRS:UNINITIALIZED=../LAStools/LASzip/dll
+LASZIP_INCLUDE_DIRS:UNINITIALIZED=../../LAStools/LASzip/dll
 
 //No help, variable specified on the command line.
-LASZIP_LIBRARY:UNINITIALIZED=../LAStools/LASzip/build/src/liblaszip.dylib
+LASZIP_LIBRARY:UNINITIALIZED=../../LAStools/LASzip/build/src/liblaszip.dylib
 
 //Value Computed by CMake
 PotreeConverter_BINARY_DIR:STATIC=/Users/danielsuo/thirdlife/lib/octree/build/PotreeConverter

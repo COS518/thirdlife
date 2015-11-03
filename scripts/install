@@ -5,7 +5,7 @@ if [[ $(uname) == 'Linux' ]]; then
   npm install -g gulp
   npm install
 
-  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../LAStools/LASzip/dll -DLASZIP_LIBRARY=../LAStools/LASzip/build/src/liblaszip.so ..
+  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/build/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.so ..
 elif [[ $(uname) == 'Darwin' ]]; then
   # Install node and gulp
   brew install node
@@ -24,7 +24,8 @@ elif [[ $(uname) == 'Darwin' ]]; then
   cd octree
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../LAStools/LASzip/dll -DLASZIP_LIBRARY=../LAStools/LASzip/build/src/liblaszip.dylib ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
   make
   cd ../..
 fi
+
