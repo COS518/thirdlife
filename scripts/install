@@ -24,12 +24,12 @@ elif [[ $(uname) == 'Darwin' ]]; then
   cd ../../..
 
   # Install PotreeConverter
-  # cd octree
-  # mkdir -p build
-  # cd build
-  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
-  # make
-  # cd ../..
+  cd octree
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
+  make
+  cd ../..
 
   # Install Potree
   cd lib/potree
