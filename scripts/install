@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $(uname) == 'Linux' ]]; then
-  sudo apt-get install -y nodejs npm
+  sudo apt-get install -y nodejs-legacy npm
   npm install -g gulp
   npm install
 
@@ -21,11 +21,19 @@ elif [[ $(uname) == 'Darwin' ]]; then
   cd ../../..
 
   # Install PotreeConverter
-  cd octree
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
-  make
+  # cd octree
+  # mkdir -p build
+  # cd build
+  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
+  # make
+  # cd ../..
+
+  # Install Potree
+  cd lib/potree
+  npm install
+  npm install gulp
+  gulp build
+
   cd ../..
 fi
 
