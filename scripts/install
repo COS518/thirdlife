@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ $(uname) == 'Linux' ]]; then
-  sudo apt-get install -y nodejs npm
+  sudo apt-get install -y nodejs npm nodejs-legacy
   npm install -g gulp
   npm install
+  cd octree
+  gulp build
 
   # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/build/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.so ..
 elif [[ $(uname) == 'Darwin' ]]; then
