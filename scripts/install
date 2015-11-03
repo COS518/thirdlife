@@ -15,21 +15,14 @@ elif [[ $(uname) == 'Darwin' ]]; then
   npm install -g gulp
   npm install
 
-  # Install LAStools
-  cd lib/LAStools/LASzip
+  # Install PotreeConverter
+  cd lib/octree
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cp ../../../lib/LAStools/LASzip/build/src/liblaszip.dylib
+  cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll ..
   make
-  cd ../../../..
-
-  # Install PotreeConverter
-  # cd lib/octree
-  # mkdir -p build
-  # cd build
-  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.dylib ..
-  # make
-  # cd ../..
+  cd ../../..
 
   # Install Potree
   cd lib/potree

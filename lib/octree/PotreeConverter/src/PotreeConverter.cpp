@@ -5,11 +5,11 @@
 
 #include "PotreeConverter.h"
 #include "stuff.h"
-#include "LASPointReader.h"
+// #include "LASPointReader.h"
 #include "PTXPointReader.h"
 #include "PotreeException.h"
 #include "PotreeWriter.h"
-#include "LASPointWriter.hpp"
+// #include "LASPointWriter.hpp"
 #include "BINPointWriter.hpp"
 #include "BINPointReader.hpp"
 #include "PlyPointReader.h"
@@ -42,9 +42,10 @@ namespace Potree{
 
 PointReader *PotreeConverter::createPointReader(string path, PointAttributes pointAttributes){
 	PointReader *reader = NULL;
-	if(boost::iends_with(path, ".las") || boost::iends_with(path, ".laz")){
-		reader = new LASPointReader(path);
-	}else if(boost::iends_with(path, ".ptx")){
+	// if(boost::iends_with(path, ".las") || boost::iends_with(path, ".laz")){
+	// 	reader = new LASPointReader(path);
+	// }else 
+	if(boost::iends_with(path, ".ptx")){
 		reader = new PTXPointReader(path);
 	}else if(boost::iends_with(path, ".ply")){
 		reader = new PlyPointReader(path);
@@ -83,9 +84,11 @@ void PotreeConverter::prepare(){
 				path pDirectoryEntry = it->path();
 				if(boost::filesystem::is_regular_file(pDirectoryEntry)){
 					string filepath = pDirectoryEntry.string();
-					if(boost::iends_with(filepath, ".las") 
-						|| boost::iends_with(filepath, ".laz") 
-						|| boost::iends_with(filepath, ".xyz")
+					if(
+						// boost::iends_with(filepath, ".las") 
+						// || boost::iends_with(filepath, ".laz") 
+						// || 
+						boost::iends_with(filepath, ".xyz")
 						|| boost::iends_with(filepath, ".pts")
 						|| boost::iends_with(filepath, ".ptx")
 						|| boost::iends_with(filepath, ".ply")){
@@ -153,13 +156,15 @@ void PotreeConverter::generatePage(string name){
 		while(getline(in, line)){
 			if(line.find("<!-- INCLUDE SETTINGS HERE -->") != string::npos){
 				out << "\t<script src=\"./" << name << ".js\"></script>" << endl;
-			}else if((outputFormat == Potree::OutputFormat::LAS || outputFormat == Potree::OutputFormat::LAZ) && 
-				line.find("<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->") != string::npos){
+			}
+			// else if((outputFormat == Potree::OutputFormat::LAS || outputFormat == Potree::OutputFormat::LAZ) && 
+			// 	line.find("<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->") != string::npos){
 				
-				out << "\t<script src=\"../libs/plasio/js/laslaz.js\"></script>" << endl;
-				out << "\t<script src=\"../libs/plasio/vendor/bluebird.js\"></script>" << endl;
-				out << "\t<script src=\"../build/js/laslaz.js\"></script>" << endl;
-			}else{
+			// 	out << "\t<script src=\"../libs/plasio/js/laslaz.js\"></script>" << endl;
+			// 	out << "\t<script src=\"../libs/plasio/vendor/bluebird.js\"></script>" << endl;
+			// 	out << "\t<script src=\"../build/js/laslaz.js\"></script>" << endl;
+			// }
+			else{
 				out << line << endl;
 			}
 			
