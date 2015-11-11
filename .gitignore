@@ -2,7 +2,6 @@ node_modules
 .DS_Store
 
 # Potree
-build
 node_modules
 docs/.marking_your_own_pointcloud_loader.md.html
 docs/.file_format.md.html
@@ -13,6 +12,7 @@ docs/.how_to_create_your_own_pointcloud_loader.md.html
 .project
 
 # PotreeConverter
+server/PotreeConverter/build
 Potree.v11.suo
 Potree.v12.suo
 Potree.sdf
