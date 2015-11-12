@@ -8,27 +8,20 @@ if [[ $(uname) == 'Linux' ]]; then
   cd potree
   gulp build
 
-  # cmake -DCMAKE_BUILD_TYPE=Release -DLASZIP_INCLUDE_DIRS=../../LAStools/LASzip/build/dll -DLASZIP_LIBRARY=../../LAStools/LASzip/build/src/liblaszip.so ..
 elif [[ $(uname) == 'Darwin' ]]; then
   # Install node and gulp
   brew install node cmake boost
-  sudo npm install -g gulp
+  sudo npm install -g gulp nodemon browserify browser-sync
   npm install
 
   # Install PotreeConverter
-  cd server
-  mkdir build
-  cd build
-  # cp ../../../lib/LAStools/LASzip/build/src/liblaszip.dylib
+  mkdir -p server/build
+  cd server/buil
   cmake -DCMAKE_BUILD_TYPE=Release ..
   make
   cd ../..
 
   # Install Potree
-  cd client
-  npm install
-  gulp build
-
-  cd ..
+  ./scripts/update
 fi
 
