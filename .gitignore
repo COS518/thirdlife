@@ -12,7 +12,7 @@ docs/.how_to_create_your_own_pointcloud_loader.md.html
 .project
 
 # PotreeConverter
-server/PotreeConverter/build
+server/build
 Potree.v11.suo
 Potree.v12.suo
 Potree.sdf
