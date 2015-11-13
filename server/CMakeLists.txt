@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(Potree)
+project(ThirdLife)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-#find_package(LASzip REQUIRED)
 find_package(Boost COMPONENTS system thread filesystem program_options regex REQUIRED)
 
 if(UNIX)
@@ -12,6 +11,7 @@ if(UNIX)
 endif()
 
 add_subdirectory(PotreeConverter)
+add_subdirectory(TCPServer)
 
 message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}")
