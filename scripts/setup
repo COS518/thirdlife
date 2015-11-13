@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [[ $(uname) == 'Linux' ]]; then
+  sudo apt-get install -y nodejs nodejs-legacy npm cmake
+
+elif [[ $(uname) == 'Darwin' ]]; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install node cmake boost
+fi
+
+# Set up server processing
+mkdir -p server/build
+cd server/build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+cd ../..
+
+# Set up client
+sudo npm install -g gulp nodemon browserify browser-sync
+ ./scripts/update
