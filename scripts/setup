@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 if [[ $(uname) == 'Linux' ]]; then
+  sudo apt-get install software-properties-common
+  sudo add-apt-repository ppa:george-edison55/cmake-3.x
+  sudo apt-get update
   sudo apt-get install -y nodejs nodejs-legacy npm cmake
 
 elif [[ $(uname) == 'Darwin' ]]; then
@@ -15,6 +18,12 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 cd ../..
 
+# Set up server
+cd server/SocketServer
+cmake ./
+
+cd ../..
+
 # Set up client
-sudo npm install -g gulp nodemon browserify browser-sync
+npm install -g gulp nodemon browserify browser-sync
  ./scripts/update

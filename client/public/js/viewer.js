@@ -11,6 +11,12 @@ if(sceneProperties.quality === null){
 	sceneProperties.quality = "Squares";
 }
 
+var socket = io();
+
+socket.on('data', function(msg) {
+  console.log(msg);
+});
+
 var fov = sceneProperties.fov;
 var pointSize = sceneProperties.pointSize;
 var pointCountTarget = sceneProperties.pointLimit;
