@@ -37,6 +37,7 @@ public:
 	bool addCalledSinceLastFlush = false;
 	PotreeWriter *potreeWriter;
 	vector<Point> cache;
+    int version_num = 0;
 	int storeLimit = 20'000;
 	vector<Point> store;
 	bool isInMemory = true;
@@ -46,6 +47,8 @@ public:
 	PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level);
 
 	~PWNode();
+
+    string version();
 
 	string name() const;
 
