@@ -211,6 +211,7 @@ int main(int argc, char **argv){
 	try{
 		Arguments a = parseArguments(argc, argv);
 		printArguments(a);
+		cout << a.source[0] << endl;
 
 		PotreeConverter pc(a.outdir, a.source);
 
@@ -227,6 +228,11 @@ int main(int argc, char **argv){
 		pc.pageName = a.pageName;
 		pc.storeOption = a.storeOption;
 
+		pc.convert();
+
+		string newsource = "/Users/yindaz/Dropbox/CourseWork/COS518/thirdlife/server/update.ply";
+		pc.define_source(newsource, 0);
+		pc.storeOption = StoreOption::INCREMENTAL;
 		pc.convert();
 	}catch(exception &e){
 		cout << "ERROR: " << e.what() << endl;

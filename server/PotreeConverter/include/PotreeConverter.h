@@ -51,6 +51,11 @@ public:
 		
 	void convert();
 
+	void define_source( string &s, int id)
+	{
+		sources[id] = s;
+	}
+
 };
 
 }

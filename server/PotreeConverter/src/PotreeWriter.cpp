@@ -92,11 +92,12 @@ string PWNode::hierarchyPath(){
 }
 
   string PWNode:: version(){
-    		return std::to_string(version_num);
+    		return "_" + std::to_string(version_num);
   }
 
 string PWNode::path(){
   string path = hierarchyPath() + "/" + name() + version() + potreeWriter->getExtension();
+	// string path = hierarchyPath() + "/" + name() + potreeWriter->getExtension();
 	return path;
 }
 
@@ -229,7 +230,9 @@ PWNode *PWNode::add(Point &point){
 void PWNode::flush(){
 
 	std::function<void(vector<Point> &points, bool append)> writeToDisk = [&](vector<Point> &points, bool append){
-      this->version_num = this->version_num++;
+      // this->version_num = version_num++;
+		version_num ++;
+		std::cout << "Version change to: " << version_num << std::endl;
 		string filepath = workDir() + "/data/" + path();
 		PointWriter *writer = NULL;
 
