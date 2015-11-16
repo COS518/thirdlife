@@ -11,7 +11,6 @@
 
 #include <boost/filesystem.hpp>
 
-
 #include "AABB.h"
 #include "SparseGrid.h"
 #include "stuff.h"
@@ -42,6 +41,7 @@ PWNode::PWNode(PotreeWriter* potreeWriter, AABB aabb){
 	this->potreeWriter = potreeWriter;
 	this->aabb = aabb;
 	this->grid = new SparseGrid(aabb, spacing());
+    this->version = getVersionOnDisk();
 }
 
 PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
@@ -50,6 +50,7 @@ PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
 	this->level = level;
 	this->potreeWriter = potreeWriter;
 	this->grid = new SparseGrid(aabb, spacing());
+    this->version = getVersionOnDisk();
 }
 
 PWNode::~PWNode(){
@@ -93,6 +94,34 @@ string PWNode::hierarchyPath(){
 
   string PWNode:: version(){
     		return std::to_string(version_num);
+  }
+
+  //This is such a hack.
+  int PWNode:: getVersionOnDisk(){
+    directory = hierarchyPath();
+    name = name();
+
+    int highestversion = 0;
+    for(auto& filename : fs::directory_iterator(directory)) {
+      if(string::strstr(filename, name)) {
+        //grab version number based on pattern
+        string currtok = strtok(filename, "_.");
+        string prevtok = currtok;
+        string version = prevtok;
+        while (currtok != NULL) {
+          //Keep the second to last token, i.e. the "_<version>.<bin>" portion of the filename, which is indicated by the next token being "bin" followed by null.
+          version = prevtok;
+          prevtok = currtok;
+          currtok = strtok(NULL, "_.");
+        }
+        int verint = std::stoi(version);
+        if(verint > highestversion) {
+          highestversion = verint;
+        }
+      }
+    }
+    cout<<highestversion<<endl;
+    return highestversion;
   }
 
 string PWNode::path(){
