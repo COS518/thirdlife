@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var path = require('path');
-var io = require('socket.io')(http);
+var socket = require('socket.io')(http);
 
 app.get('/', function(req, res) {
   res.sendFile('/public/lion.html', {
@@ -12,12 +12,16 @@ app.get('/', function(req, res) {
 
 app.use(express.static('.'));
 
-io.on('connection', function(socket) {
+socket.on('connection', function(incoming) {
   console.log('user connected!');
 
-  socket.on('disconnect', function(){
+  incoming.on('disconnect', function(){
     console.log('user disconnected');
   });
+
+  incoming.on('hello', function(msg) {
+  	socket.emit('data', 'got your message!');
+  })
 });
 
 http.listen(8080, function(){
@@ -27,5 +31,5 @@ http.listen(8080, function(){
 var watch = require('gulp-watch');
 
 watch(['./resources/**/*.bin'], function(file) {
-  io.emit('data', file.path);
+  socket.emit('data', file.path);
 });
