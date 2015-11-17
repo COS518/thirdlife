@@ -18,12 +18,6 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 cd ../..
 
-# Set up server
-cd server/SocketServer
-cmake ./
-
-cd ../..
-
 # Set up client
-npm install -g gulp nodemon browserify browser-sync
- ./scripts/update
+sudo npm install -g gulp nodemon browserify browser-sync
+./scripts/update
