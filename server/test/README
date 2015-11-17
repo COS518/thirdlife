@@ -11,3 +11,6 @@ done
 
 # test single input
 ./PotreeConverter.exe "${testPath}/resources/ripple.pts" -o "${testPath}/converted" --generate-page -l 3 -s 0.5
+
+
+./PotreeConverter.exe "${testPath}/resources/ripple.pts" -o "${testPath}/converted" --generate-page XXX -l 3 -s 0.5

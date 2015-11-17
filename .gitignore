@@ -11,6 +11,9 @@ docs/.materials_and_rendermodes.md.html
 docs/.how_to_create_your_own_pointcloud_loader.md.html
 .project
 
+# Socket Server
+server/SocketServer/build
+
 # PotreeConverter
 server/build
 Potree.v11.suo
@@ -37,3 +40,6 @@ lastools.opt
 CMakeFiles
 *.o
 *.a
+CMakeFiles
+CMakeCache*
+*.cmake
