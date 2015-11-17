@@ -11,7 +11,6 @@ if(UNIX)
 endif()
 
 add_subdirectory(PotreeConverter)
-add_subdirectory(TCPServer)
 
 message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost_LIBRARY_DIRS: ${Boost_LIBRARY_DIRS}")
