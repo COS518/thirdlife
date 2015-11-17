@@ -41,7 +41,7 @@ PWNode::PWNode(PotreeWriter* potreeWriter, AABB aabb){
 	this->potreeWriter = potreeWriter;
 	this->aabb = aabb;
 	this->grid = new SparseGrid(aabb, spacing());
-    this->version = getVersionOnDisk();
+    this->version_num = getVersionOnDisk();
 }
 
 PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
@@ -50,7 +50,7 @@ PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
 	this->level = level;
 	this->potreeWriter = potreeWriter;
 	this->grid = new SparseGrid(aabb, spacing());
-    this->version = getVersionOnDisk();
+    this->version_num = getVersionOnDisk();
 }
 
 PWNode::~PWNode(){
@@ -98,16 +98,20 @@ string PWNode::hierarchyPath(){
 
   //This is such a hack.
   int PWNode:: getVersionOnDisk(){
-    directory = hierarchyPath();
-    name = name();
+    string directory = hierarchyPath();
+    string nodename = name();
 
     int highestversion = 0;
-    for(auto& filename : fs::directory_iterator(directory)) {
-      if(string::strstr(filename, name)) {
+    fs::directory_iterator end;
+    for(fs::directory_iterator dir_iter(directory); dir_iter != end; dir_iter++) {
+      const string filename = dir_iter->path().string();
+      if(filename.find(nodename)) {
         //grab version number based on pattern
-        string currtok = strtok(filename, "_.");
-        string prevtok = currtok;
-        string version = prevtok;
+        char* cstrfilename;
+        strcpy(cstrfilename, filename.c_str());
+        char* currtok = strtok(cstrfilename, "_.");
+        char* prevtok = currtok;
+        char* version = prevtok;
         while (currtok != NULL) {
           //Keep the second to last token, i.e. the "_<version>.<bin>" portion of the filename, which is indicated by the next token being "bin" followed by null.
           version = prevtok;
