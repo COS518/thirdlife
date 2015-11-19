@@ -38,7 +38,7 @@ public:
 	PotreeWriter *potreeWriter;
 	vector<Point> cache;
     int version_num = 0;
-	int storeLimit = 20'000;
+	int storeLimit = 20000;
 	vector<Point> store;
 	bool isInMemory = true;
 
@@ -73,6 +73,8 @@ public:
 	string workDir();
 
 	string hierarchyPath();
+
+    int getVersionOnDisk();
 
 	string path();
 
