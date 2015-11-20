@@ -277,7 +277,7 @@ void PWNode::flush(){
 	std::function<void(vector<Point> &points, bool append)> writeToDisk = [&](vector<Point> &points, bool append){
       // this->version_num = version_num++;
 		version_num ++;
-        //		std::cout << "Node "<<name()<<": Version change to: " << version_num << std::endl;
+        		std::cout << "Node "<<name()<<": Version change to: " << version_num << std::endl;
 		string filepath = workDir() + "/data/" + path();
 		PointWriter *writer = NULL;
 
