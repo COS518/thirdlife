@@ -208,7 +208,7 @@ int main(int argc, char **argv){
 	// initialize
 	string input_dir = "../../source_ply/";
 	fs::directory_iterator fs_end_iter;
-
+	string backup_workDir;
 
 	
 	
@@ -232,9 +232,14 @@ int main(int argc, char **argv){
 		pc.pageName = a.pageName;
 		pc.storeOption = a.storeOption;
 
-		pc.convert();
+		pc.print_workDir();
 
-		// pc.define_workDir(input_dir);
+		backup_workDir = pc.get_workDir();
+		pc.convert();
+		pc.print_workDir();
+		pc.define_workDir(backup_workDir);
+		pc.print_workDir();
+
 		while(1)
 		{
 			vector<string> new_files;
@@ -252,7 +257,11 @@ int main(int argc, char **argv){
 
 			pc.define_source(new_files);
 			pc.storeOption = StoreOption::INCREMENTAL;
+
+			pc.print_workDir();
+			backup_workDir = pc.get_workDir();
 			pc.convert();
+			pc.define_workDir(backup_workDir);
 			std::cout << "Read done!" << std::endl;
 
 			for (int i = 0; i < new_files.size(); ++i)

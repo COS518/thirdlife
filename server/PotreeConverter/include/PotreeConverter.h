@@ -59,6 +59,14 @@ public:
 	{
 		workDir = workDir_;
 	}
+	void print_workDir()
+	{
+		std::cout << "workDir: " << workDir << std::endl;
+	}
+	string get_workDir()
+	{
+		return workDir;
+	}
 };
 
 }
