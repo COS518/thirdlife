@@ -41,7 +41,6 @@ PWNode::PWNode(PotreeWriter* potreeWriter, AABB aabb){
 	this->potreeWriter = potreeWriter;
 	this->aabb = aabb;
 	this->grid = new SparseGrid(aabb, spacing());
-    this->version_num = getVersionOnDisk();
 }
 
 PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
@@ -50,7 +49,6 @@ PWNode::PWNode(PotreeWriter* potreeWriter, int index, AABB aabb, int level){
 	this->level = level;
 	this->potreeWriter = potreeWriter;
 	this->grid = new SparseGrid(aabb, spacing());
-    this->version_num = getVersionOnDisk();
 }
 
 PWNode::~PWNode(){
@@ -98,33 +96,39 @@ string PWNode::hierarchyPath(){
 
   //This is such a hack.
   int PWNode:: getVersionOnDisk(){
-    string directory = hierarchyPath();
-    string nodename = name();
-
+    string directory = workDir() + "/data/" + hierarchyPath();
+    string nodename = nodePath();
+    //    cout<<"nodename is "<<nodename<<endl;
     int highestversion = 0;
     fs::directory_iterator end;
-    for(fs::directory_iterator dir_iter(directory); dir_iter != end; dir_iter++) {
-      const string filename = dir_iter->path().string();
-      if(filename.find(nodename)) {
-        //grab version number based on pattern
-        char* cstrfilename;
-        strcpy(cstrfilename, filename.c_str());
-        char* currtok = strtok(cstrfilename, "_.");
-        char* prevtok = currtok;
-        char* version = prevtok;
-        while (currtok != NULL) {
-          //Keep the second to last token, i.e. the "_<version>.<bin>" portion of the filename, which is indicated by the next token being "bin" followed by null.
-          version = prevtok;
-          prevtok = currtok;
-          currtok = strtok(NULL, "_.");
+    cout<<directory<<endl;
+    if(fs::exists(directory)) { //If output directory doesn't exist, return 0
+      fs::directory_iterator dir_iter(directory);
+      while(dir_iter != end) {
+        const string filename = dir_iter->path().string();
+        //        cout<<"curr file is "<<filename<<endl;
+        if(filename.find(nodename + "_") != string::npos) {
+          //grab version number based on pattern
+          char* cstrfilename = new char[256];
+          strcpy(cstrfilename, filename.c_str());
+          char* currtok = strtok(cstrfilename, "_.");
+          char* prevtok = currtok;
+          char* version = prevtok;
+          while (currtok != NULL) {
+            //Keep the second to last token, i.e. the "_<version>.<bin>" portion of the filename, which is indicated by the next token being "bin" followed by null.
+            version = prevtok;
+            prevtok = currtok;
+            currtok = strtok(NULL, "_.");
+          }
+          int verint = std::stoi(version);
+          if(verint > highestversion) {
+            highestversion = verint;
+          }
         }
-        int verint = std::stoi(version);
-        if(verint > highestversion) {
-          highestversion = verint;
-        }
+        dir_iter++;
       }
     }
-    cout<<highestversion<<endl;
+    //    cout<<highestversion<<endl;
     return highestversion;
   }
 
@@ -133,6 +137,13 @@ string PWNode::path(){
 	// string path = hierarchyPath() + "/" + name() + potreeWriter->getExtension();
 	return path;
 }
+
+string PWNode::nodePath(){
+  string path = hierarchyPath() + name();
+  return path;
+}
+
+
 
 PointReader *PWNode::createReader(string path){
 	PointReader *reader = NULL;
@@ -185,6 +196,7 @@ PWNode *PWNode::createChild(int childIndex ){
 	PWNode *child = new PWNode(potreeWriter, childIndex, cAABB, level+1);
 	child->parent = this;
 	children[childIndex] = child;
+    child->version_num = child->getVersionOnDisk();
 
 	return child;
 }
@@ -265,7 +277,7 @@ void PWNode::flush(){
 	std::function<void(vector<Point> &points, bool append)> writeToDisk = [&](vector<Point> &points, bool append){
       // this->version_num = version_num++;
 		version_num ++;
-		std::cout << "Version change to: " << version_num << std::endl;
+        //		std::cout << "Node "<<name()<<": Version change to: " << version_num << std::endl;
 		string filepath = workDir() + "/data/" + path();
 		PointWriter *writer = NULL;
 
@@ -466,6 +478,7 @@ PotreeWriter::PotreeWriter(string workDir, AABB aabb, float spacing, int maxDept
 	cloudjs.pointAttributes = pointAttributes;
 
 	root = new PWNode(this, aabb);
+    root->version_num = root->getVersionOnDisk();
 }
 
 string PotreeWriter::getExtension(){
@@ -657,6 +670,7 @@ void PotreeWriter::loadStateFromDisk(){
 		});
 
 		PWNode *root = new PWNode(this, cloudjs.boundingBox);
+        root->version_num = root->getVersionOnDisk();
 		for(string hrcPath : hrcPaths){
 
 			fs::path pHrcPath(hrcPath);
@@ -694,6 +708,7 @@ void PotreeWriter::loadStateFromDisk(){
 							child->parent = current;
 							child->addedSinceLastFlush = false;
 							child->isInMemory = false;
+                            child->version_num = child->getVersionOnDisk();
 							current->children[j] = child;
 							nodes.push_back(child);
 						}

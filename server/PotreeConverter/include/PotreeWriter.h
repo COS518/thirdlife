@@ -78,6 +78,8 @@ public:
 
 	string path();
 
+    string nodePath();
+
 	void flush();
 
 	void traverse(std::function<void(PWNode*)> callback);
