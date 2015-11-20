@@ -98,15 +98,15 @@ string PWNode::hierarchyPath(){
   int PWNode:: getVersionOnDisk(){
     string directory = workDir() + "/data/" + hierarchyPath();
     string nodename = nodePath();
-    //    cout<<"nodename is "<<nodename<<endl;
+        cout<<"nodename is "<<nodename<<endl;
     int highestversion = 0;
     fs::directory_iterator end;
-    cout<<directory<<endl;
+        cout<<directory<<endl;
     if(fs::exists(directory)) { //If output directory doesn't exist, return 0
       fs::directory_iterator dir_iter(directory);
       while(dir_iter != end) {
         const string filename = dir_iter->path().string();
-        //        cout<<"curr file is "<<filename<<endl;
+                cout<<"curr file is "<<filename<<endl;
         if(filename.find(nodename + "_") != string::npos) {
           //grab version number based on pattern
           char* cstrfilename = new char[256];
@@ -128,7 +128,7 @@ string PWNode::hierarchyPath(){
         dir_iter++;
       }
     }
-    //    cout<<highestversion<<endl;
+        cout<<highestversion<<endl;
     return highestversion;
   }
 
