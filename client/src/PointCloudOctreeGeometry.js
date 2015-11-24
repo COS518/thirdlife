@@ -27,6 +27,7 @@ Potree.PointCloudOctreeGeometryNode = function(name, pcoGeometry, boundingBox){
 	this.children = {};
 	this.numPoints = 0;
 	this.level = null;
+	this.version = 1;
 }
 
 Potree.PointCloudOctreeGeometryNode.IDCount = 0;
@@ -96,7 +97,7 @@ Potree.PointCloudOctreeGeometryNode.prototype.load = function(){
 }
 
 Potree.PointCloudOctreeGeometryNode.prototype.loadPoints = function(){
-	this.pcoGeometry.loader.load(this);
+	this.pcoGeometry.loader.load(this, this.version);
 };
 
 
@@ -155,6 +156,7 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 		
 		for( var i = 0; i < decoded.length; i++){
 			var name = decoded[i].name;
+			socket.emit('data',name);
 			var numPoints = decoded[i].numPoints;
 			var index = parseInt(name.charAt(name.length-1));
 			var parentName = name.substring(0, name.length-1);

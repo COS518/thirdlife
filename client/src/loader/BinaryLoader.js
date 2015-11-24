@@ -10,7 +10,7 @@ Potree.BinaryLoader = function(version, boundingBox, scale){
 	this.scale = scale;
 };
 
-Potree.BinaryLoader.prototype.load = function(node){
+Potree.BinaryLoader.prototype.load = function(node, version){
 	if(node.loaded){
 		return;
 	}
@@ -20,9 +20,9 @@ Potree.BinaryLoader.prototype.load = function(node){
 	var url = node.getURL();
 	
 	if(this.version.equalOrHigher("1.4")){
-		url += ".bin";
+		url = url + "_" + version.toString() + ".bin";
 	}
-	
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	xhr.responseType = 'arraybuffer';
