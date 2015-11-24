@@ -50,6 +50,8 @@ public:
 
     string version();
 
+    int version_int();
+
 	string name() const;
 
 	float spacing();
