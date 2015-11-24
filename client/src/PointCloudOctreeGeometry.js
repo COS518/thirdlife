@@ -156,7 +156,6 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 		
 		for( var i = 0; i < decoded.length; i++){
 			var name = decoded[i].name;
-			socket.emit('data',name);
 			var numPoints = decoded[i].numPoints;
 			var index = parseInt(name.charAt(name.length-1));
 			var parentName = name.substring(0, name.length-1);
