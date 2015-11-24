@@ -1189,26 +1189,11 @@ function loop() {
 };
 
 function reload(path) {
-	console.log('File changed: '.concat(path));
-
-	// [Unused] Given a change in a node file, load the node's name
-	var filenameStartIDX = path.search(/(r)[0-9]+(.bin)/);
-	if(filenameStartIDX < 0){
-		console.log('Error: invalid node file.');
+	nodeRegex = path.search(/(.hrc)+/);
+	if (nodeRegex < 0) {
 		return;
 	}
-	filename = path.substring(filenameStartIDX);
-	nodeName = filename.match(/[0-9]+/).toString();
-
-	// [Unused] Load the actual node object into var node
-	var root = pointcloud.pcoGeometry.root;
-	var node = root;
-	if(node != null && node.loaded){
-		for(nodeIDXchar of nodeName.split('')){
-			node = node.children[parseInt(nodeIDXchar)];
-		}
-	}
-
+	
 	// Reload everything
 	pointcloud.pcoGeometry.root.loadHierachyThenPoints()
 	

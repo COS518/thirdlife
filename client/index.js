@@ -19,7 +19,9 @@ socket.on('connection', function(incoming) {
     console.log('user disconnected');
   });
 
-  incoming.on('hello', function(msg) {
+  incoming.on('data', function(msg) {
+  	
+  	console.log(msg);
   	socket.emit('data', 'got your message!');
   })
 });
@@ -30,6 +32,6 @@ http.listen(8080, function(){
 
 var watch = require('gulp-watch');
 
-watch(['./resources/**/*.bin'], function(file) {
+watch(['./resources/**/'], function(file) {
   socket.emit('data', file.path);
 });
