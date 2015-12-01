@@ -94,11 +94,15 @@ string PWNode::hierarchyPath(){
     		return "_" + std::to_string(version_num);
   }
 
+  int PWNode:: version_int(){
+    return version_num;
+  }
+
   //This is such a hack.
   int PWNode:: getVersionOnDisk(){
     string directory = workDir() + "/data/" + hierarchyPath();
     string nodename = nodePath();
-        cout<<"nodename is "<<nodename<<endl;
+    cout<<"nodename is "<<nodename<<endl;
     int highestversion = 0;
     fs::directory_iterator end;
         cout<<directory<<endl;
@@ -108,6 +112,7 @@ string PWNode::hierarchyPath(){
         const string filename = dir_iter->path().string();
                 cout<<"curr file is "<<filename<<endl;
         if(filename.find(nodename + "_") != string::npos) {
+          cout<<"found matching file!"<<endl;
           //grab version number based on pattern
           char* cstrfilename = new char[256];
           strcpy(cstrfilename, filename.c_str());
@@ -605,6 +610,7 @@ void PotreeWriter::flush(){
 
 					fout.write(reinterpret_cast<const char*>(&children), 1);
 					fout.write(reinterpret_cast<const char*>(&(descendant->numAccepted)), 4);
+                    fout.write(reinterpret_cast<const char*>(&(descendant->version_num)), 4);
 				}
 
 				fout.close();
@@ -686,18 +692,23 @@ void PotreeWriter::loadStateFromDisk(){
 			ifstream fin(hrcPath, ios::in | ios::binary);
 			std::vector<char> buffer((std::istreambuf_iterator<char>(fin)), (std::istreambuf_iterator<char>()));
 
-			for(int i = 0; 5*i < (int)buffer.size(); i++){
+			for(int i = 0; 9*i < (int)buffer.size(); i++){
 				PWNode *current= nodes[i];
 
-				char children = buffer[i*5];
-				char *p = &buffer[i*5+1];
+				char children = buffer[i*9];
+				char *p = &buffer[i*9+1];
 				unsigned int* ip = reinterpret_cast<unsigned int*>(p);
 				unsigned int numPoints = *ip;
+				char *v = &buffer[i*9+5];
+				unsigned int* vernum = reinterpret_cast<unsigned int*>(v);
+				unsigned int version_number = *vernum;
 
+                cout<<"ver num  is "<<version_number<<endl;
 				//std::bitset<8> bs(children);
 				//cout << i << "\t: " << "children: " << bs << "; " << "numPoints: " << numPoints << endl;
 
 				current->numAccepted = numPoints;
+                current->version_num = version_number;
 
 				if(children != 0){
 					current->children.resize(8, NULL);
