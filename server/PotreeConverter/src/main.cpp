@@ -206,7 +206,7 @@ void printArguments(Arguments &a){
 int main(int argc, char **argv){
 	cout.imbue(std::locale(""));
 	// initialize
-	string input_dir = "../../source_ply/";
+	string input_dir = "../../client/resources/pointclouds/thirdlife/";
 	fs::directory_iterator fs_end_iter;
 	string backup_workDir;
 
