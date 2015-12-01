@@ -14,7 +14,7 @@ if(sceneProperties.quality === null){
 var socket = io();
 
 socket.on('data', function(msg) {
-  console.log(msg);
+  reload(msg);
 });
 
 var fov = sceneProperties.fov;
@@ -1188,7 +1188,16 @@ function loop() {
 	}
 };
 
-
+function reload(path) {
+	nodeRegex = path.search(/(.hrc)+/);
+	if (nodeRegex < 0) {
+		return;
+	}
+	
+	// Reload everything
+	pointcloud.pcoGeometry.root.loadHierachyThenPoints()
+	
+};
 
 initThree();
 loop();
