@@ -51,11 +51,22 @@ public:
 		
 	void convert();
 
-	void define_source( string &s, int id)
+	void define_source( vector<string> &source_)
 	{
-		sources[id] = s;
+		sources = source_;
 	}
-
+	void define_workDir( string workDir_)
+	{
+		workDir = workDir_;
+	}
+	void print_workDir()
+	{
+		std::cout << "workDir: " << workDir << std::endl;
+	}
+	string get_workDir()
+	{
+		return workDir;
+	}
 };
 
 }

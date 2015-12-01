@@ -205,7 +205,11 @@ void printArguments(Arguments &a){
 
 int main(int argc, char **argv){
 	cout.imbue(std::locale(""));
-	
+	// initialize
+	string input_dir = "../../source_ply/";
+	fs::directory_iterator fs_end_iter;
+	string backup_workDir;
+
 	
 	
 	try{
@@ -228,12 +232,46 @@ int main(int argc, char **argv){
 		pc.pageName = a.pageName;
 		pc.storeOption = a.storeOption;
 
-		pc.convert();
+		pc.print_workDir();
 
-		string newsource = "/Users/yindaz/Dropbox/CourseWork/COS518/thirdlife/server/update.ply";
-		pc.define_source(newsource, 0);
-		pc.storeOption = StoreOption::INCREMENTAL;
+		backup_workDir = pc.get_workDir();
 		pc.convert();
+		pc.print_workDir();
+		pc.define_workDir(backup_workDir);
+		pc.print_workDir();
+
+		while(1)
+		{
+			vector<string> new_files;
+			new_files.clear();
+
+			fs::directory_iterator dir_iter(input_dir);
+			while( dir_iter != fs_end_iter )
+			{
+				string new_file_name = dir_iter->path().string();
+				new_files.push_back(new_file_name);
+				dir_iter ++;
+				std::cout << new_file_name << std::endl;
+			}
+			std::cout << new_files.size() << " files read!" << std::endl;
+
+			pc.define_source(new_files);
+			pc.storeOption = StoreOption::INCREMENTAL;
+
+			pc.print_workDir();
+			backup_workDir = pc.get_workDir();
+			pc.convert();
+			pc.define_workDir(backup_workDir);
+			std::cout << "Read done!" << std::endl;
+
+			for (int i = 0; i < new_files.size(); ++i)
+			{
+				remove ( new_files[i].c_str() );
+			}	
+
+			std::cout << "Press enter to continue ..."; 
+    		std::cin.get(); 		
+		}
 	}catch(exception &e){
 		cout << "ERROR: " << e.what() << endl;
 		return 1;
