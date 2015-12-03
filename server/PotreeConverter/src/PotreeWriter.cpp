@@ -102,7 +102,7 @@ string PWNode::hierarchyPath(){
   int PWNode:: getVersionOnDisk(){
     string directory = workDir() + "/data/" + hierarchyPath();
     string nodename = nodePath();
-    cout<<"nodename is "<<nodename<<endl;
+    //    cout<<"nodename is "<<nodename<<endl;
     int highestversion = 0;
     fs::directory_iterator end;
         cout<<directory<<endl;
@@ -110,9 +110,9 @@ string PWNode::hierarchyPath(){
       fs::directory_iterator dir_iter(directory);
       while(dir_iter != end) {
         const string filename = dir_iter->path().string();
-                cout<<"curr file is "<<filename<<endl;
+        //                cout<<"curr file is "<<filename<<endl;
         if(filename.find(nodename + "_") != string::npos) {
-          cout<<"found matching file!"<<endl;
+          //          cout<<"found matching file!"<<endl;
           //grab version number based on pattern
           char* cstrfilename = new char[256];
           strcpy(cstrfilename, filename.c_str());
@@ -282,7 +282,7 @@ void PWNode::flush(){
 	std::function<void(vector<Point> &points, bool append)> writeToDisk = [&](vector<Point> &points, bool append){
       // this->version_num = version_num++;
 		version_num ++;
-        		std::cout << "Node "<<name()<<": Version change to: " << version_num << std::endl;
+        //        		std::cout << "Node "<<name()<<": Version change to: " << version_num << std::endl;
 		string filepath = workDir() + "/data/" + path();
 		PointWriter *writer = NULL;
 
@@ -703,7 +703,7 @@ void PotreeWriter::loadStateFromDisk(){
 				unsigned int* vernum = reinterpret_cast<unsigned int*>(v);
 				unsigned int version_number = *vernum;
 
-                cout<<"ver num  is "<<version_number<<endl;
+                //                cout<<"ver num  is "<<version_number<<endl;
 				//std::bitset<8> bs(children);
 				//cout << i << "\t: " << "children: " << bs << "; " << "numPoints: " << numPoints << endl;
 

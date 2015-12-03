@@ -1193,8 +1193,9 @@ function reload(path) {
 	if (nodeRegex < 0) {
 		return;
 	}
-	console.log(path + ' reloaded!');
 	
+	console.log(path);
+
 	// Reload everything
 	pointcloud.pcoGeometry.root.loadHierachyThenPoints()
 	

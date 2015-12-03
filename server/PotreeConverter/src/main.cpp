@@ -64,6 +64,7 @@ struct Arguments{
 	string aabbValuesString;
 	vector<double> aabbValues;
 	string pageName = "";
+    string dir_to_watch = "";
 };
 
 Arguments parseArguments(int argc, char **argv){
@@ -86,7 +87,8 @@ Arguments parseArguments(int argc, char **argv){
 		("aabb", po::value<string>(&a.aabbValuesString), "Bounding cube as \"minX minY minZ maxX maxY maxZ\". If not provided it is automatically computed")
 		("incremental", "Add new points to existing conversion")
 		("overwrite", "Replace existing conversion at target directory")
-		("source", po::value<std::vector<std::string> >(), "Source file. Can be LAS, LAZ, PTX or PLY");
+      ("source", po::value<std::vector<std::string> >(), "Source file. Can be LAS, LAZ, PTX or PLY");
+      //    ("dir_to_watch", po::value<std::string> >(), "The directory to monitor for online updates");
 	po::positional_options_description p; 
 	p.add("source", -1); 
 
@@ -115,6 +117,11 @@ Arguments parseArguments(int argc, char **argv){
 		cerr << "source file parameter is missing" << endl;
 		exit(1);
 	}
+
+    if(vm.count("dir_to_watch")) {
+      a.dir_to_watch = vm["dir_to_watch"].as<std::string>();
+    }
+
 
 	if(vm.count("color-range")){
 		a.colorRange = vm["color-range"].as< vector<double> >();
@@ -245,13 +252,15 @@ int main(int argc, char **argv){
 			vector<string> new_files;
 			new_files.clear();
 
-			fs::directory_iterator dir_iter(input_dir);
+			fs::directory_iterator dir_iter(a.dir_to_watch);
 			while( dir_iter != fs_end_iter )
 			{
+              if(dir_iter->path().extension() == "ply") {
 				string new_file_name = dir_iter->path().string();
 				new_files.push_back(new_file_name);
 				dir_iter ++;
 				std::cout << new_file_name << std::endl;
+              }
 			}
 			std::cout << new_files.size() << " files read!" << std::endl;
 
@@ -269,6 +278,7 @@ int main(int argc, char **argv){
 				remove ( new_files[i].c_str() );
 			}	
 
+            //            sleep(10);
 			std::cout << "Press enter to continue ..."; 
     		std::cin.get(); 		
 		}
