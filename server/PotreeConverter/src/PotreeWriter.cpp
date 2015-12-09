@@ -319,22 +319,25 @@ void PWNode::flush(){
 	};
 
 
+    //These blocks remove nodes from memory after a flush, which is probably bad. Hopefully commenting them out isn't a problem...
 	if(isLeafNode()){
 		if(addCalledSinceLastFlush){
 			writeToDisk(store, false);		
-		}else if(!addCalledSinceLastFlush && isInMemory){
-			store = vector<Point>();
-			isInMemory = false;
 		}
+        //else if(!addCalledSinceLastFlush && isInMemory){
+        //			store = vector<Point>();
+		//	isInMemory = false;
+		//}
 	}else{
 		if(addCalledSinceLastFlush){
 			writeToDisk(cache, true);
 			cache = vector<Point>();
-		}else if(!addCalledSinceLastFlush && isInMemory){
-			delete grid;
-			grid = new SparseGrid(aabb, spacing());
-			isInMemory = false;
 		}
+        //else if(!addCalledSinceLastFlush && isInMemory){
+		//	delete grid;
+		//	grid = new SparseGrid(aabb, spacing());
+		//	isInMemory = false;
+		//}
 	}
 
 	addCalledSinceLastFlush = false;
