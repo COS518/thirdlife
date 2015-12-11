@@ -23,6 +23,8 @@
 #include <math.h>
 #include <fstream>
 
+#include <time.h>
+
 using std::stringstream;
 using std::map;
 using std::string;
@@ -281,11 +283,13 @@ void PotreeConverter::convert(){
           cout << "READING:  " << source << endl;
 
           PointReader *reader = createPointReader(source, pointAttributes);
+          clock_t add_time = clock();
           while(reader->readNextPoint()){
             pointsProcessed++;
             
 			Point p = reader->getPoint();
 			writer->add(p);
+
             
 			if((pointsProcessed % (1000000)) == 0){
               writer->processStore();
@@ -318,18 +322,21 @@ void PotreeConverter::convert(){
               
               cout << seconds << "s" << endl;
 			}
-            
+             
 			//if(pointsProcessed >= 10'000'000){
 			//	break;
 			//}
-          }
+          } //reader loop
+          std::cout<<"Adding took "<<((float)(clock() - add_time)/CLOCKS_PER_SEC)<<" seconds"<<std::endl;
           reader->close();
           delete reader;
         }
 	
         cout << "closing writer" << endl;
+        clock_t flush_time = clock();
         writer->flush();
         writer->close();
+        std::cout<<"Flushing took "<<((float)(clock() - flush_time)/CLOCKS_PER_SEC)<<" seconds"<<std::endl;
         
         float percent = (float)writer->numAccepted / (float)pointsProcessed;
         percent = percent * 100;
