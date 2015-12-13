@@ -40,9 +40,9 @@ void printUsage(po::options_description &desc){
 
 // from http://stackoverflow.com/questions/15577107/sets-of-mutually-exclusive-options-in-boost-program-options
 void conflicting_options(const boost::program_options::variables_map & vm, const std::string & opt1, const std::string & opt2){
-    if (vm.count(opt1) && !vm[opt1].defaulted() && vm.count(opt2) && !vm[opt2].defaulted()){
-        throw std::logic_error(std::string("Conflicting options '") + opt1 + "' and '" + opt2 + "'.");
-    }
+	if (vm.count(opt1) && !vm[opt1].defaulted() && vm.count(opt2) && !vm[opt2].defaulted()){
+		throw std::logic_error(std::string("Conflicting options '") + opt1 + "' and '" + opt2 + "'.");
+	}
 }
 
 struct Arguments{
@@ -64,7 +64,7 @@ struct Arguments{
 	string aabbValuesString;
 	vector<double> aabbValues;
 	string pageName = "";
-    string dir_to_watch = "";
+	string dir_to_watch = "";
 };
 
 Arguments parseArguments(int argc, char **argv){
@@ -72,22 +72,22 @@ Arguments parseArguments(int argc, char **argv){
 
 	po::options_description desc("Options"); 
 	desc.add_options() 
-		("help,h", "prints usage")
-		("generate-page,p", po::value<string>(&a.pageName), "Generates a ready to use web page with the given name.")
-		("outdir,o", po::value<string>(&a.outdir), "output directory") 
-		("spacing,s", po::value<float>(&a.spacing), "Distance between points at root level. Distance halves each level.") 
-		("spacing-by-diagonal-fraction,d", po::value<int>(&a.diagonalFraction), "Maximum number of points on the diagonal in the first level (sets spacing). spacing = diagonal / value")
-		("levels,l", po::value<int>(&a.levels), "Number of levels that will be generated. 0: only root, 1: root and its children, ...")
-		("input-format,f", po::value<string>(&a.format), "Input format. xyz: cartesian coordinates as floats, rgb: colors as numbers, i: intensity as number")
-		("color-range", po::value<std::vector<double> >()->multitoken(), "")
-		("intensity-range", po::value<std::vector<double> >()->multitoken(), "")
-		("output-format", po::value<string>(&a.outFormatString), "Output format can be BINARY, LAS or LAZ. Default is BINARY")
-		("output-attributes,a", po::value<std::vector<std::string> >()->multitoken(), "can be any combination of RGB, INTENSITY and CLASSIFICATION. Default is RGB.")
-		("scale", po::value<double>(&a.scale), "Scale of the X, Y, Z coordinate in LAS and LAZ files.")
-		("aabb", po::value<string>(&a.aabbValuesString), "Bounding cube as \"minX minY minZ maxX maxY maxZ\". If not provided it is automatically computed")
-		("incremental", "Add new points to existing conversion")
-		("overwrite", "Replace existing conversion at target directory")
-      ("source", po::value<std::vector<std::string> >(), "Source file. Can be LAS, LAZ, PTX or PLY");
+	("help,h", "prints usage")
+	("generate-page,p", po::value<string>(&a.pageName), "Generates a ready to use web page with the given name.")
+	("outdir,o", po::value<string>(&a.outdir), "output directory") 
+	("spacing,s", po::value<float>(&a.spacing), "Distance between points at root level. Distance halves each level.") 
+	("spacing-by-diagonal-fraction,d", po::value<int>(&a.diagonalFraction), "Maximum number of points on the diagonal in the first level (sets spacing). spacing = diagonal / value")
+	("levels,l", po::value<int>(&a.levels), "Number of levels that will be generated. 0: only root, 1: root and its children, ...")
+	("input-format,f", po::value<string>(&a.format), "Input format. xyz: cartesian coordinates as floats, rgb: colors as numbers, i: intensity as number")
+	("color-range", po::value<std::vector<double> >()->multitoken(), "")
+	("intensity-range", po::value<std::vector<double> >()->multitoken(), "")
+	("output-format", po::value<string>(&a.outFormatString), "Output format can be BINARY, LAS or LAZ. Default is BINARY")
+	("output-attributes,a", po::value<std::vector<std::string> >()->multitoken(), "can be any combination of RGB, INTENSITY and CLASSIFICATION. Default is RGB.")
+	("scale", po::value<double>(&a.scale), "Scale of the X, Y, Z coordinate in LAS and LAZ files.")
+	("aabb", po::value<string>(&a.aabbValuesString), "Bounding cube as \"minX minY minZ maxX maxY maxZ\". If not provided it is automatically computed")
+	("incremental", "Add new points to existing conversion")
+	("overwrite", "Replace existing conversion at target directory")
+	("source", po::value<std::vector<std::string> >(), "Source file. Can be LAS, LAZ, PTX or PLY");
       //    ("dir_to_watch", po::value<std::string> >(), "The directory to monitor for online updates");
 	po::positional_options_description p; 
 	p.add("source", -1); 
@@ -118,9 +118,9 @@ Arguments parseArguments(int argc, char **argv){
 		exit(1);
 	}
 
-    if(vm.count("dir_to_watch")) {
-      a.dir_to_watch = vm["dir_to_watch"].as<std::string>();
-    }
+	if(vm.count("dir_to_watch")) {
+		a.dir_to_watch = vm["dir_to_watch"].as<std::string>();
+	}
 
 
 	if(vm.count("color-range")){
@@ -151,7 +151,7 @@ Arguments parseArguments(int argc, char **argv){
 	if(vm.count("aabb")){
 		char sep = ' '; 
 		for(size_t p=0, q=0; p!= a.aabbValuesString.npos; p=q)
-    		a.aabbValues.push_back(atof(a.aabbValuesString.substr(p+(p!=0), (q = a.aabbValuesString.find(sep, p+1))-p-(p!=0)).c_str())); 
+			a.aabbValues.push_back(atof(a.aabbValuesString.substr(p+(p!=0), (q = a.aabbValuesString.find(sep, p+1))-p-(p!=0)).c_str())); 
 
 		if(a.aabbValues.size() != 6){
 			cerr << "AABB requires 6 arguments" << endl;
@@ -255,12 +255,12 @@ int main(int argc, char **argv){
 			fs::directory_iterator dir_iter(a.dir_to_watch);
 			while( dir_iter != fs_end_iter )
 			{
-              if(dir_iter->path().extension() == "ply") {
-				string new_file_name = dir_iter->path().string();
-				new_files.push_back(new_file_name);
-				dir_iter ++;
-				std::cout << new_file_name << std::endl;
-              }
+				if(dir_iter->path().extension() == "ply") {
+					string new_file_name = dir_iter->path().string();
+					new_files.push_back(new_file_name);
+					dir_iter ++;
+					std::cout << new_file_name << std::endl;
+				}
 			}
 			std::cout << new_files.size() << " files read!" << std::endl;
 
@@ -273,14 +273,14 @@ int main(int argc, char **argv){
 			pc.define_workDir(backup_workDir);
 			std::cout << "Read done!" << std::endl;
 
-			for (int i = 0; i < new_files.size(); ++i)
-			{
-				remove ( new_files[i].c_str() );
-			}	
+			//for (int i = 0; i < new_files.size(); ++i)
+			//{
+			//	remove ( new_files[i].c_str() );
+			//}	
 
             //            sleep(10);
 			std::cout << "Press enter to continue ..."; 
-    		std::cin.get(); 		
+			std::cin.get(); 		
 		}
 	}catch(exception &e){
 		cout << "ERROR: " << e.what() << endl;

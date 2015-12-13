@@ -1189,15 +1189,116 @@ function loop() {
 };
 
 function reload(path) {
-	nodeRegex = path.search(/(.hrc)+/);
-	if (nodeRegex < 0) {
+	//console.log(path);
+
+	// Given a change in a node bin file, load the node's name and version
+	var filenameStartIDX = path.search(/(r)[0-9]+_[0-9]+(.bin)/);
+	if(filenameStartIDX < 0){
 		return;
 	}
-	
-	console.log(path);
+	filename = path.substring(filenameStartIDX);
+	nodeName = filename.substring(filename.search(/[0-9]+_/),filename.search(/_/));
+	versionID = parseInt(filename.substring(filename.search(/_/)+1,filename.search(/(.bin)/)));
+
+  var nodeIDXqueue = [];
+  for(nodeIDXchar of nodeName.split('')){
+		nodeIDXqueue.push(parseInt(nodeIDXchar));
+	}
+
+	// Set version of target node and reload it
+	function setVersion(node, version, parent, idx) {
+		if (nodeIDXqueue.length > 0) {
+			var childIDX = nodeIDXqueue.shift();
+			setVersion(node.children[childIDX],version, node, childIDX);
+		}
+		else {
+			// Simulate unloading by deleting node from children array of parent and re-assigning it
+			// console.log(node);
+			// console.log(parent);
+			// console.log(idx);
+
+			// console.log(path);
+
+			if (node instanceof Potree.PointCloudOctreeNode) {
+				node.geometryNode.loaded = false;
+				node.geometryNode.loadPoints();
+			}
+
+			if (node instanceof Potree.PointCloudOctreeGeometryNode) {
+				node.loaded = false;
+				node.loadPoints();
+			}
+
+			/*var childCopy = parent.children[idx];
+
+			parent.children[idx] = null;
+
+			childCopy.geometryNode.loadPoints();
+			parent.children[idx] = childCopy;*/
+
+
+
+
+			/*if (parent instanceof Potree.PointCloudOctreeNode) {
+				parent.geometryNode.children[idx] = null;
+
+				if (node instanceof Potree.PointCloudOctreeNode) {
+					parent.geometryNode.children[idx] = node.geometryNode;
+				}
+				if (node instanceof Potree.PointCloudOctreeGeometryNode) {
+					parent.geometryNode.children[idx] = node;
+				}
+
+			}
+
+			if (parent instanceof Potree.PointCloudOctreeGeometryNode) {
+				parent.children[idx] = null;
+
+				if (node instanceof Potree.PointCloudOctreeNode) {
+					parent.children[idx] = node.geometryNode;
+				}
+				if (node instanceof Potree.PointCloudOctreeGeometryNode) {
+					parent.children[idx] = node;
+				}
+			}
+
+			if (parent instanceof Potree.PointCloudOctreeNode) {
+				//parent.geometryNode.children[idx] 
+				parent.geometryNode.children[idx].version = version;
+				try {
+					console.log("Loading points...");
+					parent.geometryNode.children[idx].loadPoints();
+					console.log("... finished loading points!");
+				} catch (e) {
+					console.log("Failed to load points.");
+					console.log(path);
+				}
+			}
+			if (parent instanceof Potree.PointCloudOctreeGeometryNode) {
+				//parent.children[idx] = node;
+				parent.children[idx].version = version;
+				try {
+					console.log("Loading points...");
+					parent.children[idx].loadPoints();
+					console.log("... finished loading points!");
+				} catch (e) {
+					console.log("Failed to load points.");
+					console.log(path);
+				}
+			}*/
+
+			// Re-assign node to children array of parent and reload point
+			
+		}
+	}
+	setVersion(pointcloud.root, versionID, null, null);
 
 	// Reload everything
-	pointcloud.pcoGeometry.root.loadHierachyThenPoints()
+	//try {
+	//	pointcloud.pcoGeometry.root.loadHierachyThenPoints();
+	//} catch (err) {
+	//	console.log(err);
+	//}
 	
 };
 
