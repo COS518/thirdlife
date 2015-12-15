@@ -1328,7 +1328,7 @@ Potree.BinaryLoader = function(version, boundingBox, scale){
 	this.scale = scale;
 };
 
-Potree.BinaryLoader.prototype.load = function(node){
+Potree.BinaryLoader.prototype.load = function(node, version){
 	if(node.loaded){
 		return;
 	}
@@ -1338,9 +1338,9 @@ Potree.BinaryLoader.prototype.load = function(node){
 	var url = node.getURL();
 	
 	if(this.version.equalOrHigher("1.4")){
-		url += ".bin";
+		url = url + "_" + version.toString() + ".bin";
 	}
-	
+
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	xhr.responseType = 'arraybuffer';
@@ -5336,6 +5336,7 @@ Potree.PointCloudOctreeGeometryNode = function(name, pcoGeometry, boundingBox){
 	this.children = {};
 	this.numPoints = 0;
 	this.level = null;
+	this.version = 0;
 }
 
 Potree.PointCloudOctreeGeometryNode.IDCount = 0;
@@ -5405,7 +5406,7 @@ Potree.PointCloudOctreeGeometryNode.prototype.load = function(){
 }
 
 Potree.PointCloudOctreeGeometryNode.prototype.loadPoints = function(){
-	this.pcoGeometry.loader.load(this);
+	this.pcoGeometry.loader.load(this, this.version);
 };
 
 
@@ -5422,11 +5423,13 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 		var children = view.getUint8(0);
 		var numPoints = view.getUint32(1, true);
 		node.numPoints = numPoints;
-		stack.push({children: children, numPoints: numPoints, name: node.name});
+		var versionNum = view.getUint32(5,true);
+		node.version = versionNum;
+		stack.push({children: children, numPoints: numPoints, version: versionNum, name: node.name});
 		
 		var decoded = [];
 		
-		var offset = 5;
+		var offset = 9;
 		while(stack.length > 0){
 		
 			var snode = stack.shift();
@@ -5438,12 +5441,13 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 					
 					var childChildren = view.getUint8(offset);
 					var childNumPoints = view.getUint32(offset + 1, true);
+					var childVersionNum = view.getUint32(offset + 5,true);
 					
-					stack.push({children: childChildren, numPoints: childNumPoints, name: childName});
+					stack.push({children: childChildren, numPoints: childNumPoints, version: childVersionNum, name: childName});
 					
-					decoded.push({children: childChildren, numPoints: childNumPoints, name: childName});
+					decoded.push({children: childChildren, numPoints: childNumPoints, version: childVersionNum, name: childName});
 					
-					offset += 5;
+					offset += 9;
 				}
 				
 				mask = mask * 2;
@@ -5465,6 +5469,7 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 		for( var i = 0; i < decoded.length; i++){
 			var name = decoded[i].name;
 			var numPoints = decoded[i].numPoints;
+			var versionNum = decoded[i].version;
 			var index = parseInt(name.charAt(name.length-1));
 			var parentName = name.substring(0, name.length-1);
 			var parentNode = nodes[parentName]
@@ -5474,6 +5479,7 @@ Potree.PointCloudOctreeGeometryNode.prototype.loadHierachyThenPoints = function(
 			var currentNode = new Potree.PointCloudOctreeGeometryNode(name, pco, boundingBox);
 			currentNode.level = level;
 			currentNode.numPoints = numPoints;
+			currentNode.version = versionNum;
 			currentNode.hasChildren = decoded[i].children > 0;
 			parentNode.addChild(currentNode);
 			nodes[name] = currentNode;
