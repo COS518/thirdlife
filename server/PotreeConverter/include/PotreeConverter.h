@@ -46,8 +46,11 @@ public:
 	vector<double> aabbValues;
 	string pageName = "";
 	StoreOption storeOption = StoreOption::ABORT_IF_EXISTS;
+    string dir_to_watch = "../../source_ply/";
 
 	PotreeConverter(string workDir, vector<string> sources);
+
+    void set_dir_to_watch(string dir);
 		
 	void convert();
 

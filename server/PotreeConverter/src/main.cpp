@@ -64,7 +64,7 @@ struct Arguments{
 	string aabbValuesString;
 	vector<double> aabbValues;
 	string pageName = "";
-	string dir_to_watch = "";
+  string dir_to_watch = "../../source_ply/";
 };
 
 Arguments parseArguments(int argc, char **argv){
@@ -241,12 +241,18 @@ int main(int argc, char **argv){
 
 		pc.print_workDir();
 
+        pc.set_dir_to_watch(a.dir_to_watch);
+
 		backup_workDir = pc.get_workDir();
-		pc.convert();
+
 		pc.print_workDir();
 		pc.define_workDir(backup_workDir);
 		pc.print_workDir();
 
+		pc.convert();
+
+
+        /*
 		while(1)
 		{
 			vector<string> new_files;
@@ -282,6 +288,8 @@ int main(int argc, char **argv){
 			std::cout << "Press enter to continue ..."; 
 			std::cin.get(); 		
 		}
+
+        */
 	}catch(exception &e){
 		cout << "ERROR: " << e.what() << endl;
 		return 1;

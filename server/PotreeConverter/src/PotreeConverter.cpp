@@ -23,6 +23,8 @@
 #include <math.h>
 #include <fstream>
 
+#include <time.h>
+
 using std::stringstream;
 using std::map;
 using std::string;
@@ -200,8 +202,11 @@ void PotreeConverter::generatePage(string name){
 	}
 }
 
+  void PotreeConverter::set_dir_to_watch(string dir) {
+    dir_to_watch = dir;
+  }
+
 void PotreeConverter::convert(){
-	auto start = high_resolution_clock::now();
 
 	prepare();
 
@@ -248,73 +253,117 @@ void PotreeConverter::convert(){
 	if(writer == NULL){
 		return;
 	}
+    
 
-	for (const auto &source : sources) {
-		cout << "READING:  " << source << endl;
+    fs::directory_iterator fs_end_iter;
+    while(1) 
+      {
+        auto start = high_resolution_clock::now();
 
-		PointReader *reader = createPointReader(source, pointAttributes);
-		while(reader->readNextPoint()){
-			pointsProcessed++;
+        vector<string> new_files;
+        new_files.clear();
+        
+        fs::directory_iterator dir_iter(dir_to_watch);
 
+        while( dir_iter != fs_end_iter )
+          {
+            if(dir_iter->path().extension() == ".ply") {
+              string new_file_name = dir_iter->path().string();
+              new_files.push_back(new_file_name);
+              //              std::cout << new_file_name << std::endl;
+            }
+            dir_iter ++;
+          }
+        std::cout << new_files.size() << " files read!" << std::endl;
+        
+        sources = new_files;
+        
+
+        for (const auto &source : sources) {
+          cout << "READING:  " << source << endl;
+
+          PointReader *reader = createPointReader(source, pointAttributes);
+          clock_t add_time = clock();
+          while(reader->readNextPoint()){
+            pointsProcessed++;
+            
 			Point p = reader->getPoint();
 			writer->add(p);
 
+            
 			if((pointsProcessed % (1000000)) == 0){
-				writer->processStore();
-				writer->waitUntilProcessed();
-
-				auto end = high_resolution_clock::now();
-				long long duration = duration_cast<milliseconds>(end-start).count();
-				float seconds = duration / 1000.0f;
-
-				stringstream ssMessage;
-
-				ssMessage.imbue(std::locale(""));
-				ssMessage << "INDEXING: ";
-				ssMessage << pointsProcessed << " points processed; ";
-				ssMessage << writer->numAccepted << " points written; ";
-				ssMessage << seconds << " seconds passed";
-
-				cout << ssMessage.str() << endl;
+              writer->processStore();
+              writer->waitUntilProcessed();
+              
+              auto end = high_resolution_clock::now();
+              long long duration = duration_cast<milliseconds>(end-start).count();
+              float seconds = duration / 1000.0f;
+              
+              stringstream ssMessage;
+              
+              ssMessage.imbue(std::locale(""));
+              ssMessage << "INDEXING: ";
+              ssMessage << pointsProcessed << " points processed; ";
+              ssMessage << writer->numAccepted << " points written; ";
+              ssMessage << seconds << " seconds passed";
+              
+              cout << ssMessage.str() << endl;
 			}
 			if((pointsProcessed % (10000000)) == 0){
-				cout << "FLUSHING: ";
-			
-				auto start = high_resolution_clock::now();
-			
-				writer->flush();
-			
-				auto end = high_resolution_clock::now();
-				long long duration = duration_cast<milliseconds>(end-start).count();
-				float seconds = duration / 1000.0f;
-			
-				cout << seconds << "s" << endl;
+              cout << "FLUSHING: ";
+              
+              auto start = high_resolution_clock::now();
+              
+              writer->flush();
+              
+              auto end = high_resolution_clock::now();
+              long long duration = duration_cast<milliseconds>(end-start).count();
+              float seconds = duration / 1000.0f;
+              
+              cout << seconds << "s" << endl;
 			}
-
+             
 			//if(pointsProcessed >= 10'000'000){
 			//	break;
 			//}
-		}
-		reader->close();
-		delete reader;
-	}
+          } //reader loop
+          std::cout<<"Adding took "<<((float)(clock() - add_time)/CLOCKS_PER_SEC)<<" seconds"<<std::endl;
+          reader->close();
+          delete reader;
+        }
 	
-	cout << "closing writer" << endl;
-	writer->flush();
-	writer->close();
+        cout << "closing writer" << endl;
+        clock_t flush_time = clock();
+        writer->flush();
+        writer->close();
+        std::cout<<"Flushing took "<<((float)(clock() - flush_time)/CLOCKS_PER_SEC)<<" seconds"<<std::endl;
+        
+        float percent = (float)writer->numAccepted / (float)pointsProcessed;
+        percent = percent * 100;
+        
+        auto end = high_resolution_clock::now();
+        long long duration = duration_cast<milliseconds>(end-start).count();
+        
+        std::cout << "Read done!" << std::endl;
+        
+        for (int i = 0; i < new_files.size(); ++i)
+          {
+            remove ( new_files[i].c_str() );
+          }	
+        
 
-	float percent = (float)writer->numAccepted / (float)pointsProcessed;
-	percent = percent * 100;
+        
+        cout << endl;
+        cout << "conversion finished" << endl;
+        cout << pointsProcessed << " points were processed and " << writer->numAccepted << " points ( " << percent << "% ) were written to the output. " << endl;
+        
+        cout << "duration: " << (duration / 1000.0f) << "s" << endl;
 
-	auto end = high_resolution_clock::now();
-	long long duration = duration_cast<milliseconds>(end-start).count();
-
-	
-	cout << endl;
-	cout << "conversion finished" << endl;
-	cout << pointsProcessed << " points were processed and " << writer->numAccepted << " points ( " << percent << "% ) were written to the output. " << endl;
-
-	cout << "duration: " << (duration / 1000.0f) << "s" << endl;
+        //            sleep(10);
+        std::cout << "Press enter to continue ..."; 
+        std::cin.get(); 		
+        
+      } //end while(1)
 }
-
+  
 }

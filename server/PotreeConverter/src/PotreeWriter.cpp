@@ -220,6 +220,7 @@ PWNode *PWNode::add(Point &point){
 	addCalledSinceLastFlush = true;
 
 	if(!isInMemory){
+      std::cout<<"LOADING NODE FROM DISK!"<<std::endl;
 		loadFromDisk();
 	}
 
@@ -279,6 +280,7 @@ PWNode *PWNode::add(Point &point){
 
 void PWNode::flush(){
 
+  //  std::cout<<"=======NODE FLUSH!!!!!======"<<std::endl;
 	std::function<void(vector<Point> &points, bool append)> writeToDisk = [&](vector<Point> &points, bool append){
       // this->version_num = version_num++;
 		version_num ++;
@@ -290,13 +292,15 @@ void PWNode::flush(){
 			fs::create_directories(workDir() + "/data/" + hierarchyPath());
 		}
 
+        string tempwritepath = workDir() + "/temp/prependwrite" + potreeWriter->getExtension();
 		if(append){
-			string temppath = workDir() + "/temp/prepend" + potreeWriter->getExtension();
+          //          std::cout<<"I am appending"<<std::endl;
+          string temppath = workDir() + "/temp/prepend" + potreeWriter->getExtension();
 			if(fs::exists(filepath)){
 				fs::rename(fs::path(filepath), fs::path(temppath));
 			}
 
-			writer = createWriter(filepath);
+			writer = createWriter(tempwritepath);
 			if(fs::exists(temppath)){
 				PointReader *reader = createReader(temppath);
 				while(reader->readNextPoint()){
@@ -304,11 +308,12 @@ void PWNode::flush(){
 				}
 				reader->close();
 				delete reader;
-				fs::remove(temppath);
+                fs::remove(temppath);
 			}
 		}else{
+
 			fs::remove(filepath);
-			writer = createWriter(filepath);
+			writer = createWriter(tempwritepath);
 		}
 
 		for(const auto &e_c : points){
@@ -316,25 +321,29 @@ void PWNode::flush(){
 		}
 		writer->close();
 		delete writer;
+        fs::rename(fs::path(tempwritepath), fs::path(filepath));
 	};
 
 
+    //These blocks remove nodes from memory after a flush, which is probably bad. Hopefully commenting them out isn't a problem...
 	if(isLeafNode()){
 		if(addCalledSinceLastFlush){
 			writeToDisk(store, false);		
-		}else if(!addCalledSinceLastFlush && isInMemory){
-			store = vector<Point>();
-			isInMemory = false;
 		}
+        //else if(!addCalledSinceLastFlush && isInMemory){
+        //			store = vector<Point>();
+		//	isInMemory = false;
+		//}
 	}else{
 		if(addCalledSinceLastFlush){
 			writeToDisk(cache, true);
 			cache = vector<Point>();
-		}else if(!addCalledSinceLastFlush && isInMemory){
-			delete grid;
-			grid = new SparseGrid(aabb, spacing());
-			isInMemory = false;
 		}
+        //else if(!addCalledSinceLastFlush && isInMemory){
+		//	delete grid;
+		//	grid = new SparseGrid(aabb, spacing());
+		//	isInMemory = false;
+		//}
 	}
 
 	addCalledSinceLastFlush = false;
