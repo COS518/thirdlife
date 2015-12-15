@@ -64,7 +64,7 @@ struct Arguments{
 	string aabbValuesString;
 	vector<double> aabbValues;
 	string pageName = "";
-  string dir_to_watch = "../../source_ply/";
+  string dir_to_watch = "server/source_ply/";
 };
 
 Arguments parseArguments(int argc, char **argv){

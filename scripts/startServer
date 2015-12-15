@@ -1,0 +1,1 @@
+./server/build/PotreeConverter/PotreeConverter --source server/test/resources/default_binary.ply --outdir client/resources/pointclouds/thirdlife/_converted/ --aabb "-10 -10 -10 10 10 10"  --overwrite
