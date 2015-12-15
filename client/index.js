@@ -32,6 +32,6 @@ http.listen(8080, function(){
 
 var watch = require('gulp-watch');
 
-watch(['./resources/pointclouds/thirdlife/_converted/data/r/*.bin'], function(file) {
+watch(['./resources/pointclouds/thirdlife/_converted/data/r/*.hrc'], function(file) {
   socket.emit('data', file.path);
 });

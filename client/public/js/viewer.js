@@ -1189,10 +1189,8 @@ function loop() {
 };
 
 function reload(path) {
-	console.log(path); 
-
 	// Given a change in a node bin file, load the node's name and version
-	var filenameStartIDX = path.search(/(r)[0-9]+_[0-9]+(.bin)/);
+	/*var filenameStartIDX = path.search(/(r)[0-9]+_[0-9]+(.bin)/);
 	if(filenameStartIDX < 0){
 		return;
 	}
@@ -1209,7 +1207,12 @@ function reload(path) {
 	function setVersion(node, version, parent, idx) {
 		if (nodeIDXqueue.length > 0) {
 			var childIDX = nodeIDXqueue.shift();
-			setVersion(node.children[childIDX],version, node, childIDX);
+			if (typeof node == 'unedfined' || node == null) {
+				console.log(parent);
+				parent.geometryNode.loadHierarchyThenPoints();
+			} else {
+				setVersion(node.children[childIDX],version, node, childIDX);
+			}
 		}
 		else {
 
@@ -1229,7 +1232,14 @@ function reload(path) {
 
 		}
 	}
-	setVersion(pointcloud.root, versionID, null, null);
+	setVersion(pointcloud.root, versionID, null, null);*/
+
+	// Reload everything
+	try {
+		pointcloud.pcoGeometry.root.loadHierachyThenPoints();
+	} catch (err) {
+		console.log(err);
+	}
 
 };
 
