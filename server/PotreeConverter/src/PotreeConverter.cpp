@@ -22,6 +22,7 @@
 #include <vector>
 #include <math.h>
 #include <fstream>
+#include <thread>
 
 #include <time.h>
 
@@ -359,9 +360,10 @@ void PotreeConverter::convert(){
         
         cout << "duration: " << (duration / 1000.0f) << "s" << endl;
 
-        //            sleep(10);
-        std::cout << "Press enter to continue ..."; 
-        std::cin.get(); 		
+        //        sleep(1);
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        //        std::cout << "Press enter to continue ..."; 
+        //        std::cin.get(); 		
         
       } //end while(1)
 }
