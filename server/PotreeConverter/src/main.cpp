@@ -76,7 +76,7 @@ Arguments parseArguments(int argc, char **argv){
 	("generate-page,p", po::value<string>(&a.pageName), "Generates a ready to use web page with the given name.")
 	("outdir,o", po::value<string>(&a.outdir), "output directory") 
 	("spacing,s", po::value<float>(&a.spacing), "Distance between points at root level. Distance halves each level.") 
-	("spacing-by-diagonal-fraction,d", po::value<int>(&a.diagonalFraction), "Maximum number of points on the diagonal in the first level (sets spacing). spacing = diagonal / value")
+	("spacing-by-diagonal-fraction", po::value<int>(&a.diagonalFraction), "Maximum number of points on the diagonal in the first level (sets spacing). spacing = diagonal / value")
 	("levels,l", po::value<int>(&a.levels), "Number of levels that will be generated. 0: only root, 1: root and its children, ...")
 	("input-format,f", po::value<string>(&a.format), "Input format. xyz: cartesian coordinates as floats, rgb: colors as numbers, i: intensity as number")
 	("color-range", po::value<std::vector<double> >()->multitoken(), "")
@@ -88,7 +88,7 @@ Arguments parseArguments(int argc, char **argv){
 	("incremental", "Add new points to existing conversion")
 	("overwrite", "Replace existing conversion at target directory")
 	("source", po::value<std::vector<std::string> >(), "Source file. Can be LAS, LAZ, PTX or PLY");
-      //    ("dir_to_watch", po::value<std::string> >(), "The directory to monitor for online updates");
+    ("dir_to_watch", po::value<std::string> (), "The directory to monitor for online updates");
 	po::positional_options_description p; 
 	p.add("source", -1); 
 

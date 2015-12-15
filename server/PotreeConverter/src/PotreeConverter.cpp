@@ -254,6 +254,65 @@ void PotreeConverter::convert(){
 	if(writer == NULL){
 		return;
 	}
+
+    //Write initial pointcloud
+    for (const auto &source : sources) {
+      cout << "READING:  " << source << endl;
+      
+      PointReader *reader = createPointReader(source, pointAttributes);
+      while(reader->readNextPoint()){
+        pointsProcessed++;
+        
+        Point p = reader->getPoint();
+        writer->add(p);
+        
+        
+        if((pointsProcessed % (1000000)) == 0){
+          writer->processStore();
+          writer->waitUntilProcessed();
+          
+              
+          stringstream ssMessage;
+          
+          ssMessage.imbue(std::locale(""));
+          ssMessage << "INDEXING: ";
+          ssMessage << pointsProcessed << " points processed; ";
+          ssMessage << writer->numAccepted << " points written; ";
+          
+          cout << ssMessage.str() << endl;
+        }
+        if((pointsProcessed % (10000000)) == 0){
+          cout << "FLUSHING: ";
+          
+          
+          writer->flush();
+     
+        }
+        
+        //if(pointsProcessed >= 10'000'000){
+        //	break;
+        //}
+      } //reader loop
+      reader->close();
+      delete reader;
+    }
+	
+    cout << "closing writer" << endl;
+    writer->flush();
+    writer->close();
+    
+    float percent = (float)writer->numAccepted / (float)pointsProcessed;
+    percent = percent * 100;
+    
+    
+    std::cout << "Read done!" << std::endl;
+    
+    
+    cout << endl;
+    cout << "conversion finished" << endl;
+    cout << pointsProcessed << " points were processed and " << writer->numAccepted << " points ( " << percent << "% ) were written to the output. " << endl;
+
+
     
 
     fs::directory_iterator fs_end_iter;
